@@ -4,6 +4,9 @@ h2 {
   vertical-align: center;
   text-align: center;
 }
+  .footer{
+    display: none;
+  }
 
 html {
   scroll-behavior: smooth;
