@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us Now</title>
+    <script src="title-scroll.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+<style>
+.cont{
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 100px 100px;
+}
+form label{
+    color: black;
+    font-size: 30px;
+    font-family: cursive;
+    text-transform: capitalize;
+}
+.cont input{
+    color: black;
+    font-size: 20px;
+    padding: 20px 10px;
+    margin-top: 30px;
+    width: 79%;
+}
+.cont textarea{
+    color: black;
+    font-size: 20px;
+    margin-top: 30px;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#buttona1{
+    width: 100%;
+    background-color: rgb(36, 210, 36);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+#buttona1:hover{
+    background-color: rgb(10, 168, 10);
+}
+
+
+/* responsive */
+@media (max-width: 500px){
+form{
+  width: 100%;
+}
+form .cont{
+  width: 90%;
+  text-align: center;
+}
+.cont label{
+  font-size: 20px;
+}
+.cont input{
+  font-size: 15px;
+  padding: 8px 5px;
+  width: 70%;
+}
+.cont textarea{
+  font-size: 21px;
+}
+*{
+  width: 100%;
+}
+#fb{
+   width: 100%;
+   align-items: center;
+   text-align: center;
+   background: rgb(18, 16, 16);
+   position: relative;
+   bottom: 0;
+   overflow: hidden;
+   z-index: -10000000000000;
+ }
+ #fb h5{
+   color: rgb(255, 255, 255);
+   font-size: 15px;
+   font-family: cursive;
+   font-weight: bold;
+ }
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+    
+    <!-- header -->
+
+    <section class="top-nav">
+        <div class="hd">
+          FoodResto.com
+        </div>
+        <input id="menu-toggle" type="checkbox" />
+        <label class='menu-button-container' for="menu-toggle">
+          <div class='menu-button'></div>
+        </label>
+        <ul class="menu">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="pizza.html">PIZZA</a></li>
+          <li><a href="#burger">BURGER</a></li>
+          <li><a href="deserts.html">DEZERTS</a></li>
+          <li><a href="ordernow.html">ORDER NOW</a></li>
+          <li><a href="contactus.html">CONTACT US</a></li>
+        </ul>
+      </section>
+  
+  
+      <!-- header close -->
+
+
+
+
+
+    <form method="POST" name="google-sheets3">
+        <div class="cont">
+         <label for="label">Name: <input type="text" placeholder="Your Full Name"  name="Name"></label>
+         <label for="label">Email: <input type="email" placeholder="Valid Email" name="Email"></label>
+         <label for="label">Phone: <input type="text" placeholder="Your Phone Number" maxlength="10" name="Mobile"></label>
+         <label for="textlabel"></label><textarea name="Message" rows="7" placeholder="Message"></textarea>
+         <input type="submit" name="submit" id="buttona1" value="SUBMIT" >
+        
+        </div>
+    </form>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwX3Og_RoBPdd4ZCN4HUjRUKV6XTRlnSgD8-ktKTS0jxb7nGsgqftnYUaBHA4NRzjTl/exec'
+        const form = document.forms['google-sheets3']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => alert("We Will Contact You Soon"))
+            .catch(error => console.error('Error!', error.message))
+        })
+        var ajalert = document.getElementById("Name");
+      </script>
+     <!-- warning footer for responsive mode -->
+    <footer class="footer">
+      <div id="fb">
+         <h5>Copyright 2022-2023. Made by Anuj Maurya</h5>
+      </div>
+   </footer>
+   <!-- warning footer for responsive mode -->
+      
+</body>
+</html>

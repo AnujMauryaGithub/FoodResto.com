@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to FoodResto.com</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Poppins:wght@500&display=swap" rel="stylesheet"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Open+Sans:wght@700&family=Poppins:wght@500&display=swap" rel="stylesheet">  -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Poppins:wght@500&display=swap" rel="stylesheet"> -->
+<script>
+  window.onload=function(){
+    document.getElementById('loader').style.display="none";
+    document.getElementById('content').style.display="block";
+    
+  }
+</script>
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Raleway);
+h2 {
+  vertical-align: center;
+  text-align: center;
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+   width: 100%;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  font-family: "Raleway";
+  box-sizing: border-box;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #00BAF0;
+  background: linear-gradient(to right, #ff00fb, #8737ff);
+  /* background: linear-gradient(to left, #f46b45, #eea849) */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #FFF;
+  height: 60px;
+  padding: 1em;
+}
+.hd{
+    font-size: 26px;
+    font-weight: bolder;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu li{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.menu > li {
+  /* margin: 0 1rem; */
+  margin-top: -5px;
+  overflow: hidden;
+  font-size: 24px;
+  padding: 16px 14px;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+.top-nav{
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
+.menu li:hover{
+   background: #fff;
+   color: rgb(69, 69, 255);
+}
+.menu li a:hover{
+  color: rgb(69, 69, 255);
+}
+.menu li a{
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .menu-button-container {
+    display: flex;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 60px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    border: 1px solid #333;
+    height: 2.5em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+    font-size: 21px;
+    font-weight: bolder;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+  .menu li:hover{
+    background: #222;
+  }
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+}
+
+#content{
+  display: none;
+}
+#loader img{
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+
+#footer{
+    margin-top: 48rem;
+    height: 19rem;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    background: #111;
+    font-weight: 500;
+    text-transform: capitalize;
+    /* line-height: 3rem; */
+  }
+  #footer h3{
+    color: #fff;
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: 700;
+    padding-top: 40px;
+  }
+  #footer h2{
+    color: #fff;
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    background-color: #000;
+  }
+  #footer ul{
+    display: flex;
+    flex-direction: row;
+    margin-left: 350px;
+  }
+  #footer ul li{
+    list-style-type: none;
+    padding: 10px 20px;
+  }
+  #footer ul li a{
+    list-style-type: none;
+    color: #ff00fb;
+    font-size: 1.4rem;
+  }
+  #footer ul li a:hover{
+    color: white;
+  }
+  .container{
+    border: 0px solid black;
+    border-radius: 40px;
+    background: linear-gradient(to left, #ff00fb, #8737ff);
+    position: relative;
+    margin-top: 5rem;
+    margin-left: 33rem;
+    margin-right: 33rem;
+    margin-bottom: 0%;
+    font-family: cursive;
+    text-align: center;
+  }
+  .container h2{
+    font-size: 40px;
+    font-family: cursive;
+    color: #fff;
+    padding-top: 30px;
+  }
+  .container label{
+    color: #FFF;
+    font-size: 25px;
+    font-family: cursive;
+  }
+  .container input,textarea{
+    color: blue;
+    padding: 12px 27px;
+    font-size: 20px;
+    font-family: cursive;
+    text-align: center;
+    border: none;
+    border-radius: 7px;
+  }
+  .container select{
+    font-size: 20px;
+    color: rgb(84, 84, 255);
+    font-family: cursive;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+  }
+  .container select option{
+    font-size: 20px;
+    color: rgb(84, 84, 255);
+    font-family: cursive;
+    text-align: center;
+  }
+  .container #btn1{
+    color: white;
+    background-color: rgb(255, 67, 67);
+    border: 2px solid white;
+    border-radius: 9px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .container #btn1:hover{
+    background-color: red;
+  }
+  body{
+    background-color: #ffafbc;
+  }
+  .footer{
+    display: none;
+  }
+
+/* responsive */
+@media (max-width: 500px){
+  .container{
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+    border-radius: 0px;
+  }
+  form{
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+  .container #btn1{
+    background-color: red;
+  }
+  #footer{
+    display: none;
+  }
+  body{
+    background-color: #fff;
+  }
+  #fb{
+   width: 100%;
+   align-items: center;
+   text-align: center;
+   background: rgb(18, 16, 16);
+   position: relative;
+   bottom: 0;
+   overflow: hidden;
+   z-index: 2;
+ }
+ #fb h5{
+   color: rgb(255, 255, 255);
+   font-size: 15px;
+   font-family: cursive;
+   font-weight: bold;
+ }
+ label{
+   margin-left: 20px;
+ }
+ input{
+   margin-right: 10px;
+ }
+}
+
+
+</style>
+
+
+
+
+
+</head>
+<body>
+  <a id="homepage"></a>
+<div id="loader">
+  <img src="loader.gif">
+</div>
+
+<div id="content">
+
+  <!-- header -->
+
+              <section class="top-nav">
+                <div class="hd">
+                  FoodResto.com
+                </div>
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+              </label>
+                <ul class="menu">
+                  <li><a href="index.html">HOME</a></li>
+                  <li><a href="pizza.html">PIZZA</a></li>
+                  <li><a href="index.html/#burger">BURGER</a></li>
+                  <li><a href="deserts.html">DEZERTS</a></li>
+                  <li><a href="ordernow.html">ORDER NOW</a></li>
+                  <li><a href="contactus.html">CONTACT US</a></li>
+                </ul>
+              </section>
+
+
+              <!-- header closed  -->
+
+
+
+
+              <!-- form code  -->
+
+              <form method="POST" name="google-sheets2">
+                <div class="container">
+                    <marque direction: ltr;><h2>ORDER NOW</h2></marque>
+                    <label>Full Name: </label><input type="text" name="Name" placeholder="example:Anuj Maurya" id="name"><br><br>
+
+                    <label>Valid Email: </label><input type="email" name="Email" placeholder="username@gmail.com"><br><br>
+
+                    <label>Food Name: </label><input type="text" name="Food" placeholder="exmaple:Burger 1"><br><br>
+
+                    <label name="Quantity">Quantity: </label>
+                    <select name="Quantity">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select><br><br>
+
+                     <label>Address:</label><br><textarea name="Address" placeholder="" ></textarea><br><br>
+
+                    <input type="submit" type="reset" name="submit" id="btn1" value="Order Now" >
+                </div>
+              </form>
+
+         <!-- form code close -->
+
+
+
+
+
+               <!-- footer section  -->
+
+      <div id="footer">
+        <h3>FoodResto.com</h3>
+        <ul style="margin-left: 350px;">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="index.html/#burger">BURGER</a></li>
+          <li><a href="pizza.html">PIZZA</a></li>
+          <li><a href="deserts.html">DESERTS</a></li>
+          <li><a href="ordernow.html">ORDER NOW</a></li>
+          <li><a href="contactus.html">CONTACT US</a></li>
+        </ul>
+        <h2>Copyright 2022-2023. Made by Anuj Maurya</h3>
+    </div>
+
+    <!-- footer section close  -->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyV895EY6Kz5QUEiN_mKzpctltARreayG48XpXLViG6lrYvsfhd_ugVtYZ6lvTn85E3iQ/exec'
+      const form = document.forms['google-sheets2']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => alert("Thanks For Ordering " + ajalert.value + " !!  Your Order Will Be At Your Doorstep In Few Minutes.."))
+          .catch(error => console.error('Error!', error.message))
+      })
+      var ajalert = document.getElementById("name");
+    </script>
+    
+
+    <!-- warning footer for responsive mode -->
+    <footer class="footer">
+      <div id="fb">
+         <h5>Copyright 2022-2023. Made by Anuj Maurya</h5>
+      </div>
+   </footer>
+   <!-- warning footer for responsive mode -->
+
+
+<script src="title-scroll.js"></script>
+
+  </div>
+  </body>
+  </html>
